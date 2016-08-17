@@ -1,0 +1,6 @@
+applications:
+  - name: map-server-client
+    buildpacks: php_buildpack
+    memory: 64m
+    services:
+      - map
