@@ -29,7 +29,7 @@ public class MapServiceServiceInstanceBindingService
 		Map<String, Object> credentials = new LinkedHashMap<>();
 		credentials.put("url", mapServiceUri + "/spaces/" + spaceId + "/map");
 		credentials.put("userId", user.getUserId());
-		credentials.put("password", user.getUserId());
+		credentials.put("password", user.getPassword());
 		return new CreateServiceInstanceAppBindingResponse().withCredentials(credentials);
 	}
 
