@@ -40,10 +40,13 @@ public class MapServerServiceBrokerApplication {
 																put("unit", "MONTHLY");
 															}
 														}));
-												put("bullets", "fake");
+												put("bullets",
+														Arrays.asList(
+																"simple hash-map server",
+																"for demo"));
 											}
 										}, true)),
-								Arrays.asList("tag A", "tag B", "tag C"),
+								Arrays.asList("map", "kvs"),
 								new HashMap<String, Object>() {
 									{
 										put("displayName", "Map Server");
