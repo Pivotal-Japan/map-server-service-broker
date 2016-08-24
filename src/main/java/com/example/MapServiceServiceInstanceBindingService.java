@@ -23,21 +23,17 @@ public class MapServiceServiceInstanceBindingService
 	@Override
 	public CreateServiceInstanceBindingResponse createServiceInstanceBinding(
 			CreateServiceInstanceBindingRequest createServiceInstanceBindingRequest) {
-		String spaceId = createServiceInstanceBindingRequest.getServiceInstanceId();
-		String userId = createServiceInstanceBindingRequest.getBindingId();
-		MapServerUser user = mapServerClient.createUser(spaceId, userId);
+		// TODO-03: Create User
 		Map<String, Object> credentials = new LinkedHashMap<>();
-		credentials.put("url", mapServiceUri + "/spaces/" + spaceId + "/map");
-		credentials.put("userId", user.getUserId());
-		credentials.put("password", user.getPassword());
+		credentials.put("url", null /* TODO-04: URL to Map API for the created user */);
+		credentials.put("userId", null /* TODO-05: userId for the created user */);
+		credentials.put("password", null /* TODO-06: password for the created user */);
 		return new CreateServiceInstanceAppBindingResponse().withCredentials(credentials);
 	}
 
 	@Override
 	public void deleteServiceInstanceBinding(
 			DeleteServiceInstanceBindingRequest deleteServiceInstanceBindingRequest) {
-		String spaceId = deleteServiceInstanceBindingRequest.getServiceInstanceId();
-		String userId = deleteServiceInstanceBindingRequest.getBindingId();
-		mapServerClient.deleteUser(spaceId, userId);
+		// TODO-07: Delete User
 	}
 }

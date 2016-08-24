@@ -14,8 +14,7 @@ public class MapServerServiceInstanceService implements ServiceInstanceService {
     @Override
     public CreateServiceInstanceResponse createServiceInstance(
             CreateServiceInstanceRequest createServiceInstanceRequest) {
-        String spaceId = createServiceInstanceRequest.getServiceInstanceId();
-        mapServerClient.createSpace(spaceId);
+        // TODO-01: Create Space
         return new CreateServiceInstanceResponse();
     }
 
@@ -28,8 +27,7 @@ public class MapServerServiceInstanceService implements ServiceInstanceService {
     @Override
     public DeleteServiceInstanceResponse deleteServiceInstance(
             DeleteServiceInstanceRequest deleteServiceInstanceRequest) {
-        String spaceId = deleteServiceInstanceRequest.getServiceInstanceId();
-        mapServerClient.deleteSpace(spaceId);
+        // TODO-02: Delete Space
         return new DeleteServiceInstanceResponse();
     }
 
