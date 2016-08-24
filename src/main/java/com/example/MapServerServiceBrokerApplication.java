@@ -24,7 +24,7 @@ public class MapServerServiceBrokerApplication {
 	Catalog catalog() {
 		return new Catalog(
 				singletonList(
-						new ServiceDefinition("map-server", "p-map",
+						new ServiceDefinition(UUID.randomUUID().toString(), "p-map",
 								"A map-server service broker", true, false,
 								singletonList(new Plan(UUID.randomUUID().toString(),
 										"free", "free plan",
