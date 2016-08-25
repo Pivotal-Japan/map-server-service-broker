@@ -1,7 +1,6 @@
 package com.example;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.servicebroker.model.CreateServiceInstanceAppBindingResponse;
 import org.springframework.cloud.servicebroker.model.CreateServiceInstanceBindingRequest;
 import org.springframework.cloud.servicebroker.model.CreateServiceInstanceBindingResponse;
@@ -17,8 +16,8 @@ public class MapServiceServiceInstanceBindingService
 		implements ServiceInstanceBindingService {
 	@Autowired
 	MapServerClient mapServerClient;
-	@Value("${map-service.uri:http://localhost:8080}")
-	String mapServiceUri;
+	@Autowired
+	MapServerServiceBrokerConfigProperties properties;
 
 	@Override
 	public CreateServiceInstanceBindingResponse createServiceInstanceBinding(

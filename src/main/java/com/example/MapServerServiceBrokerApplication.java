@@ -1,6 +1,5 @@
 package com.example;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.servicebroker.model.Catalog;
@@ -60,14 +59,13 @@ public class MapServerServiceBrokerApplication {
 	}
 
 	@Bean
-	RestTemplate restTemplate(
-			@Value("${map-service.admin.username:admin}") String adminUsername,
-			@Value("${map-service.admin.password:admin}") String adminPassword) {
+	RestTemplate restTemplate(MapServerServiceBrokerConfigProperties properties) {
 		RestTemplate restTemplate = new RestTemplate();
 		restTemplate
 				.setInterceptors(Collections.singletonList((request, body, execution) -> {
-					String token = Base64.getEncoder().encodeToString(
-							(adminUsername + ":" + adminPassword).getBytes());
+					String token = Base64.getEncoder()
+							.encodeToString((properties.getAdmin().getUsername() + ":"
+									+ properties.getAdmin().getPassword()).getBytes());
 					request.getHeaders().add("Authorization", "Basic " + token);
 					return execution.execute(request, body);
 				}));
