@@ -20,42 +20,32 @@ public class MapServerServiceBrokerApplication {
 	}
 
 	@Bean
-	Catalog catalog() {
-		return new Catalog(
-				singletonList(
-						new ServiceDefinition(UUID.randomUUID().toString(), "p-map",
-								"A map-server service broker", true, false,
-								singletonList(new Plan(UUID.randomUUID().toString(),
-										"free", "free plan",
-										new HashMap<String, Object>() {
-											{
-												put("costs", singletonList(
-														new HashMap<String, Object>() {
-															{
-																put("amount",
-																		singletonMap(
-																				"usd",
-																				0.0));
-																put("unit", "MONTHLY");
-															}
-														}));
-												put("bullets",
-														Arrays.asList(
-																"simple hash-map server",
-																"for demo"));
-											}
-										}, true)),
-								Arrays.asList("map", "kvs"),
-								new HashMap<String, Object>() {
+	Catalog catalog(MapServerServiceBrokerConfigProperties properties) {
+		return new Catalog(singletonList(new ServiceDefinition(
+				properties.getServiceDefinitionId(), properties.getServiceDefinitionId(),
+				"A map-server service broker", true, false,
+				singletonList(new Plan(properties.getPlanId(), "free", "free plan",
+						new HashMap<String, Object>() {
+							{
+								put("costs", singletonList(new HashMap<String, Object>() {
 									{
-										put("displayName", "Map Server");
-										put("longDescription",
-												"Map Server Service Broker");
-										put("imageUrl",
-												"https://www.cloudfoundry.org/wp-content/uploads/2015/10/CF_rabbit_Blacksmith_rgb_trans_back-269x300.png");
-										put("providerDisplayName", "@making");
+										put("amount", singletonMap("usd", 0.0));
+										put("unit", "MONTHLY");
 									}
-								}, null, null)));
+								}));
+								put("bullets", Arrays.asList("simple hash-map server",
+										"for demo"));
+							}
+						}, true)),
+				Arrays.asList("map", "kvs"), new HashMap<String, Object>() {
+					{
+						put("displayName", "Map Server");
+						put("longDescription", "Map Server Service Broker");
+						put("imageUrl",
+								"https://www.cloudfoundry.org/wp-content/uploads/2015/10/CF_rabbit_Blacksmith_rgb_trans_back-269x300.png");
+						put("providerDisplayName", "@making");
+					}
+				}, null, null)));
 	}
 
 	@Bean
