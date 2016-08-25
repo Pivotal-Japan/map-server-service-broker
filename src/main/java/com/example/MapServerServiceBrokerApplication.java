@@ -22,7 +22,7 @@ public class MapServerServiceBrokerApplication {
 	@Bean
 	Catalog catalog(MapServerServiceBrokerConfigProperties properties) {
 		return new Catalog(singletonList(new ServiceDefinition(
-				properties.getServiceDefinitionId(), properties.getServiceDefinitionId(),
+				properties.getServiceDefinitionId(), properties.getServiceDefinitionName(),
 				"A map-server service broker", true, false,
 				singletonList(new Plan(properties.getPlanId(), "free", "free plan",
 						new HashMap<String, Object>() {
